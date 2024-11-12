@@ -1,0 +1,229 @@
+*{
+    font-family: sans;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    margin: 0%;
+}
+
+@font-face {
+    font-family: sans;
+    src: url('./fonts/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: sans-italic;
+    src: url('./fonts/JosefinSans-Italic-VariableFont_wght.ttf');
+}
+
+#desktop{
+    height: 100%;
+}
+
+#desktop-image{
+    height: 37%;
+}
+
+#desktop-image > img{
+    height: 100%;
+    width: 100%;
+}
+
+#desktop-image-bottom{
+    height: 63%;
+    background-color: #ededed;
+}
+
+#container{
+    width:35% ;
+    position: absolute;
+    top: 1%;
+    bottom: 15%;
+    left: 0%;
+    right: 0%;
+    margin: 0px auto;
+}
+
+h1{
+    font-size: 3rem;
+    color: white;
+}
+
+#container input{
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 85%;
+    outline: none;
+    /* margin-bottom: 1.7rem; */
+    border: none;
+}
+
+input::placeholder{
+    color: rgb(144, 144, 144);
+}
+
+.input-content{
+    padding: 0.6rem 1.2rem;
+    /* border: 1px solid; */
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.input-content::before{
+    box-sizing: border-box;
+    content: url(./images/icon-check.svg);
+    z-index: 2;
+    display: block;
+    height: 24px;
+    width: 24px;
+    margin-right: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 0.5rem; */
+    /* padding: 6px 14px; */
+    border-radius: 24px;
+    border: 2px solid gainsboro;
+}
+
+.add-task{
+    background: none;
+    border: none;
+    background-color: hsl(226, 100%, 67%);
+    /* padding: 12px; */
+    border-radius: 24px;
+    height: 42px;
+    width: 43px;
+    text-align: center;
+
+}
+
+.add-task:hover{
+    background-color: black;
+}
+
+.add-task > img{
+    height: 70%;
+    width: 70%;
+}
+
+
+
+
+
+
+.todo-list{
+    height: 61%;
+    margin-top: 2rem;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: auto;
+    /* overscroll-behavior:; */
+    /* box-shadow: 1px 1px 5px hsl(0, 0%, 98%); */
+}
+
+ul{
+    margin: 0;
+    padding: 0%;
+    list-style-type:none;
+}
+
+li{
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    list-style: none;
+    border-bottom: 2px solid gainsboro;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1rem;
+    font-size: 1.2rem;
+}
+
+.check-btn{
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    transition: border .1s ease-in-out,
+    background-image .5s ease-in-out;
+    cursor: pointer;
+}
+
+.check-btn:hover{
+    border: 2px solid transparent;
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+
+    border-radius: 24px;
+}
+
+
+
+.check-btn > img{
+    height: 12px;
+    width: 12px;
+}
+
+.task-text{
+    /* border: 1px solid; */
+    width: 80%;
+    margin: 0% 1rem;
+}
+
+li:hover .del-btn{
+    visibility: visible;
+}
+
+
+
+.del-btn{
+    visibility: hidden;
+    background: none;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.del-btn img{
+    height: 14px;
+    width: 14px;
+}
+
+.task-completed > .check-btn{
+    background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    border: none;
+}
+
+.task-completed{
+    background-color: hsl(0, 0%, 98%);
+}
+
+.task-completed > .task-text{
+    text-decoration: line-through;
+    color: rgb(144, 144, 144);
+
+}
+
+.navigation{
+    padding: 0.1rem 1rem;
+    /* border: 1px solid; */
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px ;
+
+}
