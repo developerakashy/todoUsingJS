@@ -37,7 +37,8 @@ body{
 }
 
 #container{
-    width:35% ;
+    width:95% ;
+    height: 100%;
     position: absolute;
     top: 1%;
     bottom: 15%;
@@ -56,7 +57,6 @@ h1{
     padding: 0.5rem;
     width: 85%;
     outline: none;
-    /* margin-bottom: 1.7rem; */
     border: none;
 }
 
@@ -76,11 +76,11 @@ input::placeholder{
 
 .input-content::before{
     box-sizing: border-box;
-    content: url(./images/icon-check.svg);
-    z-index: 2;
+    content: '';
+    /* z-index: 2; */
     display: block;
-    height: 24px;
-    width: 24px;
+    height: 18px;
+    width: 18px;
     margin-right: 0.4rem;
     display: flex;
     justify-content: center;
@@ -103,6 +103,15 @@ input::placeholder{
 
 }
 
+@keyframes flow {
+    0%{
+        margin-top: 1rem;
+    }
+    100%{
+        margin-top: 0rem;
+    }
+}
+
 .add-task:hover{
     background-color: black;
 }
@@ -113,16 +122,16 @@ input::placeholder{
 }
 
 
-
-
-
-
 .todo-list{
-    height: 61%;
+    height: 45%;
     margin-top: 2rem;
     background-color: #fff;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     overflow: auto;
+    padding-top: 0rem;
+    scrollbar-width:none;
+
     /* overscroll-behavior:; */
     /* box-shadow: 1px 1px 5px hsl(0, 0%, 98%); */
 }
@@ -134,16 +143,21 @@ ul{
 }
 
 li{
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
+    /* border-top-right-radius: 12px;
+    border-top-left-radius: 12px; */
     list-style: none;
-    border-bottom: 2px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding:1rem;
     font-size: 1.2rem;
+    margin-top: 0%;
+    animation: flow .5s ease-in-out;
 }
+
+
+
 
 .check-btn{
     box-sizing: border-box;
@@ -151,8 +165,8 @@ li{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
     border-radius: 24px;
     transition: border .1s ease-in-out,
     background-image .5s ease-in-out;
@@ -180,14 +194,12 @@ li{
     margin: 0% 1rem;
 }
 
-li:hover .del-btn{
-    visibility: visible;
-}
+
 
 
 
 .del-btn{
-    visibility: hidden;
+
     background: none;
     border-radius: 24px;
     border: none;
@@ -217,8 +229,9 @@ li:hover .del-btn{
 }
 
 .navigation{
+    position: relative;
     padding: 0.1rem 1rem;
-    /* border: 1px solid; */
+    border-top: 1px solid gainsboro;
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -226,4 +239,140 @@ li:hover .del-btn{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px ;
 
+}
+
+
+#count{
+    color: grey;
+    font-size: 0.9rem;
+    width: max-content;
+}
+
+.filter{
+    position: absolute;
+    top: 55px;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    border-radius: 5px;
+    gap: 1rem;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter  > button{
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.clear-completed{
+    background: none;
+    border: none;
+    color: grey;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: max-content;
+}
+
+.clear-completed:hover{
+    color: hsl(235, 19%, 35%);
+}
+
+.all, .active, .completed{
+    color: grey;
+}
+
+.view-hidden:hover{
+    color: hsl(235, 19%, 35%);
+}
+.view-visible{
+    color: hsl(220, 98%, 61%);
+}
+
+.empty{
+    display: none;
+    text-align: center;
+    color: gray;
+    font-family: sans-italic;
+    margin-top:5rem ;
+    font-size: 1.5rem;
+    animation: flow-down .2s ease;
+}
+
+@keyframes flow-down{
+    0%{
+        margin-top: 4rem;
+    }
+    100%{
+        margin-top: 5rem;
+    }
+}
+
+
+@media (min-width: 500px) {
+    #container{
+        width: 80%;
+        height: auto;
+    }
+
+    .todo-list{
+        height: 60%;
+    }
+
+    .del-btn{
+        visibility: hidden;
+    }
+
+    li:hover .del-btn{
+        visibility: visible;
+    }
+
+
+    .check-btn{
+        height: 24px;
+        width: 24px;
+    }
+
+    .input-content::before{
+        height: 24px;
+        width: 24px;
+    }
+}
+
+
+@media (min-width: 900px) {
+    #container{
+        width: 60%;
+    }
+
+    .clear-completed{
+        width: 30%;
+    }
+
+    .filter{
+        position: static;
+        gap: 0;
+    }
+
+    #count{
+        width: 30%;
+    }
+}
+
+@media (min-width: 1100px) {
+    #container{
+        width: 50%;
+    }
+}
+
+@media (min-width: 1300px) {
+    #container{
+        width: 550px;
+    }
 }
