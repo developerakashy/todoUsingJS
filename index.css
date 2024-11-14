@@ -6,6 +6,7 @@
 body{
     height: 100vh;
     margin: 0%;
+    padding: 0;
 }
 
 @font-face {
@@ -22,22 +23,49 @@ body{
     height: 100%;
 }
 
-#desktop-image{
-    height: 37%;
-}
-
-#desktop-image > img{
-    height: 100%;
+.desktop-image{
+    height: 28%;
     width: 100%;
 }
 
-#desktop-image-bottom{
-    height: 63%;
-    background-color: #ededed;
+.desktop-image{
+    background-image: url(./images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+
+}
+
+.dark-mode-desktop{
+    background-image: url(./images/bg-desktop-dark.jpg);
+}
+
+.mobile-image{
+    background-image: url(./images/bg-mobile-light.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 28%;
+    display: block;
+
+
+}
+
+.dark-mode-mobile{
+    background-image: url(./images/bg-mobile-dark.jpg);
+}
+
+.desktop-image-bottom{
+    height: 72%;
+    background-color: hsl(0, 0%, 100%);
+}
+
+.dark-mode-bottom{
+    background-color: hsl(235, 21%, 11%);
 }
 
 #container{
-    width:95% ;
+    width:85% ;
     height: 100%;
     position: absolute;
     top: 1%;
@@ -47,8 +75,32 @@ body{
     margin: 0px auto;
 }
 
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head > div{
+    border: none;
+    cursor: pointer;
+}
+
+.mode-button{
+    background-image: url(./images/icon-moon.svg);
+    height: 26px;
+    width: 26px;
+}
+
+.dark-mode-button{
+    background-image: url(./images/icon-sun.svg);
+    height: 26px;
+    width: 26px;
+}
+
 h1{
-    font-size: 3rem;
+    font-size: 2.2rem;
+    margin: 2.2rem 0rem;
     color: white;
 }
 
@@ -65,14 +117,27 @@ input::placeholder{
 }
 
 .input-content{
-    padding: 0.6rem 1.2rem;
+    padding: 0.45rem 1.2rem;
     /* border: 1px solid; */
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 4px;
+    box-shadow: 0px 10px 20px hsla(0, 0% ,10%, 0.2);
 }
+
+.dark-input-content{
+    background-color: hsl(235, 24%, 19%);
+    box-shadow: 0px 10px 10px hsla(0, 0%, 0%, 0.2);
+}
+
+.dark-input-content > input{
+    background-color: hsl(235, 24%, 19%);
+    color: white;
+}
+
+
 
 .input-content::before{
     box-sizing: border-box;
@@ -91,16 +156,24 @@ input::placeholder{
     border: 2px solid gainsboro;
 }
 
+.dark-input-content::before{
+    border-color: hsl(234, 11%, 52%);
+}
+
 .add-task{
     background: none;
     border: none;
     background-color: hsl(226, 100%, 67%);
     /* padding: 12px; */
     border-radius: 24px;
-    height: 42px;
-    width: 43px;
+    height: 30px;
+    width: 30px;
     text-align: center;
 
+}
+
+.dark-input-content .add-task:hover{
+    background-color: #0342b6;
 }
 
 @keyframes flow {
@@ -124,7 +197,7 @@ input::placeholder{
 
 .todo-list{
     height: 45%;
-    margin-top: 2rem;
+    margin-top: 1rem;
     background-color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -133,7 +206,22 @@ input::placeholder{
     scrollbar-width:none;
 
     /* overscroll-behavior:; */
-    /* box-shadow: 1px 1px 5px hsl(0, 0%, 98%); */
+    box-shadow: 0px 55px 50px hsla(0, 0%, 40%, 0.2);
+}
+
+.dark-todo-list{
+    background-color: hsl(235, 24%, 19%);
+    box-shadow: 0px 55px 50px hsla(0, 0%, 0%, 0.2);
+    color: white;
+}
+
+.dark-todo-list li{
+    border-color: hsl(233, 14%, 35%);
+
+}
+
+.dark-todo-list .check-btn{
+    border-color: hsl(234, 11%, 52%);
 }
 
 ul{
@@ -173,12 +261,20 @@ li{
     cursor: pointer;
 }
 
+.uncheck{
+    display: none;
+}
+
 .check-btn:hover{
     border: 2px solid transparent;
-    background: linear-gradient(#ffffff, #ffffff) padding-box,
+    background: linear-gradient(#fff, #fff) padding-box,
     linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
-
     border-radius: 24px;
+}
+
+.dark-todo-list .check-btn:hover{
+    background: linear-gradient(hsl(237, 14%, 26%), hsl(237, 14%, 26%)) padding-box,
+    linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
 }
 
 
@@ -218,8 +314,23 @@ li{
     border: none;
 }
 
+.task-completed > .check-btn > .check{
+    display: block;
+}
+
+
+
 .task-completed{
     background-color: hsl(0, 0%, 98%);
+}
+
+.dark-todo-list .task-completed{
+    background-color: hsl(235, 24%, 16%);
+}
+
+.dark-todo-list .task-completed .check-btn{
+    background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    border: none;
 }
 
 .task-completed > .task-text{
@@ -241,6 +352,14 @@ li{
 
 }
 
+.dark-mode-navigation{
+    background-color: hsl(235, 24%, 19%);
+    color: white;
+    border-color: hsl(233, 14%, 35%);
+}
+
+
+
 
 #count{
     color: grey;
@@ -250,17 +369,22 @@ li{
 
 .filter{
     position: absolute;
-    top: 55px;
+    top: 60px;
     left: 0;
     right: 0;
-    padding: 1rem;
+    padding: 0.8rem;
     border-radius: 5px;
     gap: 1rem;
     background-color: white;
-
+    box-shadow: 0px 12px 20px hsla(0, 0%, 40%, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dark-mode-navigation .filter{
+    background-color: hsl(235, 24%, 19%);
+    box-shadow: 0px 12px 20px hsla(0, 0%, 0%, 0.2);
 }
 
 .filter  > button{
@@ -288,9 +412,18 @@ li{
     color: grey;
 }
 
+.dark-mode-navigation > .all, .active, .completed{
+    color: hsl(234, 11%, 52%);
+}
+
 .view-hidden:hover{
     color: hsl(235, 19%, 35%);
 }
+
+.dark-mode-navigation .view-hidden:hover{
+    color: hsl(236, 33%, 92%);
+}
+
 .view-visible{
     color: hsl(220, 98%, 61%);
 }
@@ -318,11 +451,17 @@ li{
 @media (min-width: 500px) {
     #container{
         width: 80%;
-        height: auto;
     }
 
+    .desktop-img{
+        display: none;
+    }
+
+    .mobile-img{
+        display: block;
+    }
     .todo-list{
-        height: 60%;
+        height: 45%;
     }
 
     .del-btn{
@@ -347,6 +486,14 @@ li{
 
 
 @media (min-width: 900px) {
+
+    .desktop-image{
+        display: block;
+    }
+
+    .mobile-image{
+        display: none;
+    }
     #container{
         width: 60%;
     }
@@ -355,9 +502,18 @@ li{
         width: 30%;
     }
 
+    .todo-list{
+        height: 55%;
+    }
+
     .filter{
         position: static;
         gap: 0;
+        box-shadow: 0px 0px;
+    }
+
+    .dark-mode-navigation .filter{
+        box-shadow: 0px 0px;
     }
 
     #count{

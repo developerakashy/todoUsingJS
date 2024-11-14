@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let completedTab = document.querySelector('.completed')
     let activeTaskCount = document.querySelector('#count')
     let clearCompletedTask = document.querySelector('.clear-completed')
+    let switchModeBtn = document.querySelector('.mode-button')
     let previousTaskId
     let removeTaskFromList
+    let currentMode = localStorage.getItem('theme') || 'Light'
 
     const para = document.createElement('p')
     para.classList.add('empty')
@@ -32,6 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
         para.style.display = 'block'
     }
 
+
+    if(currentMode === 'Dark'){
+        switchMode()
+        localStorage.setItem('theme', 'Dark')
+    }
+
+    switchModeBtn.addEventListener('click', () => switchMode())
 
     addTaskBtn.addEventListener('click', (event) => addTask(event))
 
@@ -142,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         li.dataset.taskId = task.id
 
         checkDiv.classList.add('check-btn')
-        checkDiv.innerHTML = '<img class="check" src="./images/icon-check.svg" alt="">'
+        checkDiv.innerHTML = `<img class="${task.isCompleted ? 'check' : 'uncheck'}" src="./images/icon-check.svg" alt="">`
 
         textDiv.classList.add('task-text')
         textDiv.textContent = task.text
@@ -182,6 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function tickUntickTask(element){
         const li = (element.parentElement)
         li.classList.toggle('task-completed')
+        const img = li.querySelector('img')
+
+        img.classList.toggle('uncheck')
+        img.classList.toggle('check')
 
 
         tasks = tasks.map(task => task.id === Number(li.dataset.taskId) ? {...task, isCompleted: !task.isCompleted} : {...task})
@@ -230,6 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
         activeTaskCount.textContent = activeTasks.length < 2 ? `${activeTasks.length} item left` : `${activeTasks.length} items left`
     }
 
+
+
     function switchView(element){
             allTab.classList.add('view-hidden')
             allTab.classList.remove('view-visible')
@@ -258,8 +273,31 @@ document.addEventListener('DOMContentLoaded', () => {
             para.style.display = 'block'
         }
 
+    }
 
+    function switchMode(){
 
+        if(switchModeBtn.classList.contains('dark-mode-button')){
+            localStorage.setItem('theme', 'Light')
+
+        }else{
+            localStorage.setItem('theme', 'Dark')
+        }
+
+        let bgImageDesktop = document.querySelector('.desktop-image')
+        let bgImageMobile = document.querySelector('.mobile-image')
+        let desktopBottom =  document.querySelector('.desktop-image-bottom')
+        let inputContent = document.querySelector('.input-content')
+        let todoList = document.querySelector('.todo-list')
+        let navigation = document.querySelector('.navigation')
+
+        switchModeBtn.classList.toggle('dark-mode-button')
+        bgImageDesktop.classList.toggle('dark-mode-desktop')
+        bgImageMobile.classList.toggle('dark-mode-mobile')
+        desktopBottom.classList.toggle('dark-mode-bottom')
+        inputContent.classList.toggle('dark-input-content')
+        todoList.classList.toggle('dark-todo-list')
+        navigation.classList.toggle('dark-mode-navigation')
 
     }
 })
