@@ -212,6 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             removeTaskFromList = setTimeout(function(){
                 li.remove()
+                if(taskList.childElementCount <= 1){
+                    para.style.display = 'block'
+                }
             }, 1200)
 
 
@@ -225,12 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             removeTaskFromList = setTimeout(function(){
                 li.remove()
+                if(taskList.childElementCount <= 1){
+                    para.style.display = 'block'
+                }
             }, 1200)
         }
 
-        if(taskList.childElementCount <= 1){
-            para.style.display = 'block'
-        }
+
 
 
     }
