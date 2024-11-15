@@ -29,6 +29,7 @@ body{
 }
 
 .desktop-image{
+    background:linear-gradient(to right, blueviolet 30%, violet);
     background-image: url(./images/bg-desktop-light.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,10 +38,14 @@ body{
 }
 
 .dark-mode-desktop{
+    background:linear-gradient(to right, blueviolet 30%, violet);
     background-image: url(./images/bg-desktop-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .mobile-image{
+    background:linear-gradient(to right, blueviolet 30%, violet);
     background-image: url(./images/bg-mobile-light.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -52,7 +57,10 @@ body{
 }
 
 .dark-mode-mobile{
+    background:linear-gradient(to right, blueviolet 30%, violet);
     background-image: url(./images/bg-mobile-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .desktop-image-bottom{

@@ -69,10 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if(classNames.some(classname => event.target.classList.contains(classname))){
             taskList.replaceChildren()
 
+            taskList.appendChild(para)
+            para.style.display = 'none'
         }
 
-        taskList.appendChild(para)
-        para.style.display = 'none'
 
         if(event.target.classList.contains('all')){
             switchView(event.target)
